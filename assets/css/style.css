@@ -1,0 +1,48 @@
+html { 
+  background: url('../images/albumcovers.jpg') no-repeat center center fixed;    
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-weight: 500;
+  font-family: 'Sedgwick Ave ', cursive;
+
+}
+
+#heading{
+  font-family: 'Sedgwick Ave Display', cursive;
+  font-size: 30px;
+}
+
+#click-start {
+    margin-top: 125px;
+    font-size: 30px;
+    font-family: "Sedgwick Ave Display", cursive;
+}
+
+#clock{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#main-screen {
+  border: 2px;
+    background-color: black;
+    position: absolute;
+    margin: auto;
+    top:10%;
+    right: 0;    
+    left: 0;
+    width: 695px;
+    height: 350px;
+    text-align: center;
+    font-size: 18px; 
+    color: white;
+    border-radius: 50px;
+    opacity: 0.8;
+}
+
+#game-title{
+  margin-top: 10px;
+
+}

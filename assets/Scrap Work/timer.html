@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Object Review</title>
+</head>
+
+<body>
+
+<div>
+
+<h1> Trivia </h1>
+  
+<button id="startbutton"></button>
+
+<div id="display"></div>
+
+
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+
+window.onload = function() {
+
+
+
+
+  var correct = 0;
+  var incorrect = 0;
+  var noAnswer = 0;
+  var time = 30;
+  var intervalId;
+
+  function start() {
+   intervalId = setInterval(count, 1000);
+  }
+
+
+ function count() {
+   time--;
+   var converted = timeConverter(time);
+   $("#display").html(converted);
+ }
+
+
+ function timeConverter(t) {
+   var minutes = Math.floor(t / 60);
+   var seconds = t - (minutes * 60);
+
+   if (seconds < 10) {
+     seconds = "0" + seconds;
+   }
+
+   if (minutes === 0) {
+     minutes = "00";
+   }
+   else if (minutes < 10) {
+     minutes = "0" + minutes;
+   }
+
+   return minutes + ":" + seconds;
+ }
+
+});
+
+};
+
+$("#startbutton").on("click", function(){
+  start();
+  $("#display").html("00:30");
+  console.log(time);
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

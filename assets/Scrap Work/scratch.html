@@ -1,0 +1,148 @@
+<html lang="en-us"><head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="main-screen">
+        <div id="game-title">
+            <h1 id="heading">HipHop Trivia</h1>
+        </div>
+        <button id="click-start">start</button>
+        <div id="clock"></div>
+        <div id="questionsDiv">
+        </div>
+        <div id="scoreboard">
+        </div>
+    </div>
+    <!-- Script -->
+    <script type="text/javascript">
+    window.onload = function() {
+
+        var time = 46;
+        var intervalId;
+        var question1 = "Which of Jay-Z's #1 albums featured 'Takeover', a diss song aimed at fellow Hip-Hop legends Nas and Mobb Deep?";
+        var question2 = "This Hip-Hop legend's real name is Calvin Cordozar Broadus, Jr.";
+        var question3 = "This NY legend is known for his rapid fire lyricism and one of his many hits, 'Gimme Some More'"
+        var question4 = "This rap mogul tops Forbes' list of richest hip hop stars"
+        var questionsArray = [question1, question2, question3, question4]
+        var correct = 0;
+        var incorrect = 4;
+        var questionOptions = [];
+        var isChecked = false
+        var converted = timeConverter(time);
+
+
+
+        function showQuestions() {
+            var questions =
+                "<form id='form1'>" +
+                "<h4>" + question1 + "</h4>" +
+                "<input name='test' type='radio' value='inc'/>" + "A) Reasonable Doubt" +
+                "<input class= 'answer' name='test' type='radio' value='bpI'/>" + "B) The BluePrint" +
+                "<input name='test' type='radio' value='inc'/>" + "C)The Black Album" +
+                "<input name='test' type='radio' value='inc'/>" + "D) Kindom Come" +
+                "</form>" + "<br> <br>" +
+
+                "<form id='form2'>" +
+                "<h4>" + question2 + "</h4>" +
+                "<input class= 'answer' name='test' type='radio' value='snoop'/>" + "A)Snoop Dogg" +
+                "<input  name='test' type='radio' value='inc'/>" + "B) 50 Cent" +
+                "<input name='test' type='radio' value='inc'/>" + "C) Ice Cube" +
+                "<input name='test' type='radio' value='inc'/>" + "D) Chance the Rapper" +
+                "</form>" +  "<br> <br>" +
+
+                "<form id='form3'>" +
+                "<h4>" + question3 + "</h4>" +
+                "<input name='test' type='radio' value='inc'/>" + "A) Twista" +
+                "<input class= 'answer' name='test' type='radio' value='bustabus''/>" + "B) Busta Rhymes" +
+                "<input name='test' type='radio' value='inc'/>" + "C) Big Punisher" +
+                "<input name='test' type='radio' value='inc'/>" + "D) Big L" +
+                "</form>" +  "<br> <br>" +
+
+                "<form id='form4'>" +
+                "<h4>" + question4 + "</h4>" +
+                "<input name='test' type='radio' value='inc'/>" + "A)Drake" +
+                "<input  name='test' type='radio' value='inc'/>" + "B) Jay-z" +
+                "<input class= 'answer' name='test' type='radio' value='puff'/>" + "C) Puff Daddy(P Diddy aka Sean Combs)" +
+                "<input name='test' type='radio' value='inc'/>" + "D) Dr Dre" +
+                "</form>";
+            $("#questionsDiv").append(questions);
+        }
+
+        function count() {
+            time--
+            var converted = timeConverter(time);
+            $("#clock").html(converted)
+            console.log(converted);
+
+            if (time === 0) {
+                stop();
+                var bpI = $('input[value="bpI"]')
+                var snoop = $('input[value="snoop"]')
+                var bustabus = $('input[value="bustabus"]')
+                var puff = $('input[value="puff"]')
+                var answerArray = [bpI, snoop, bustabus, puff];
+
+                for (var i = 0; i < answerArray.length; i++) {
+                    if (answerArray[i].is(':checked')) {
+                        correct++;
+                        incorrect--;
+                    }
+                }
+
+                $("#questionsDiv").empty();
+                $("#scoreboard").append("<div> correct answers:" + correct + "</div>" +
+                    "<div> incorrect answers: " + incorrect + "</div>");
+            }
+        };
+
+        function start() {
+            intervalId = setInterval(count, 1000);
+            var converted = timeConverter(time);
+            console.log(time)
+        };
+
+        function stop() {
+            clearInterval(intervalId);
+        };
+
+        function playAudio() {
+            var song = $("#questionsDiv").append("<audio autoplay src='assets/audio/boondocks.mp3'></audio>");
+
+
+        }
+
+        function timeConverter(t) {
+            var minutes = Math.floor(t / 60);
+            var seconds = t - (minutes * 60);
+
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            if (minutes === 0) {
+                minutes = "00";
+            } else if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            return minutes + ":" + seconds;
+        };
+
+        $("#click-start").on("click", function() {
+            $("#click-start").remove();
+            start();
+            setTimeout(showQuestions, 1000);
+            playAudio();
+        });
+
+    }
+    </script>
+
+
+</body></html>
