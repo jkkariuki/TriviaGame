@@ -56,7 +56,7 @@ window.onload = function() {
             var pac = $('input[value="2pac"]').attr("name", "answer-2")
             var outkast = $('input[value="Outkast"]').attr("name", "answer-3")
             var answerArray = [blueprint, snoop, pac, outkast];
-            var imageSrc = ["The_Blueprint.png","Snoop.jpg","2Pac.jpg","Outkast.jpg", ]
+            var imageSrc = ["The_Blueprint.png", "Snoop.jpg", "2Pac.jpg", "Outkast.jpg", ]
             for (var i = 0; i < answerArray.length; i++) {
                 if (answerArray[i].is(':checked')) {
                     correct++;
@@ -64,12 +64,13 @@ window.onload = function() {
                 }
             }
             $("#questionsDiv").empty();
+            $("#clock").empty();
             $("#main-screen").css("opacity", 1)
             $("#scoreboard").append("<div> correct answers:" + correct + "</div>" +
                 "<div> incorrect answers: " + incorrect + "</div>");
 
-            for (var i = 0; i < imageSrc.length; i++){ 
-            	$("#questionsDiv").append("<img class='answerImage' src='assets/images/" + imageSrc[i] + "'>");
+            for (var i = 0; i < imageSrc.length; i++) {
+                $("#questionsDiv").append("<img class='answerImage' src='assets/images/" + imageSrc[i] + "'>");
             }
 
         }
@@ -110,5 +111,4 @@ window.onload = function() {
         setTimeout(showQuestions, 1000);
         playAudio();
     });
-
 }
