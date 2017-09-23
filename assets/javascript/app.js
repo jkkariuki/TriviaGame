@@ -104,7 +104,8 @@ window.onload = function() {
     };
 
     $("#click-start").on("click", function() {
-        $("#click-start").remove();
+        $(".click-start").remove();
+
         start();
         setTimeout(showQuestions, 1000);
         playAudio();

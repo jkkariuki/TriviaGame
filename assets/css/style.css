@@ -11,23 +11,35 @@ html {
 
 #heading{
   font-family: 'Sedgwick Ave Display', cursive;
-  font-size: 30px;
+  font-size: 50px;
+  margin-top: 10px;
 }
+
 
 .answerImage{
   height: 100px;
   width: 100px;
+  margin-left: 5px;
+}
+
+input{
+  margin-left: 20px;
 }
 
 #click-start {
-    margin-top: 125px;
-    font-size: 30px;
+    margin-top: 90px;
+    margin-bottom: 10px;
+    font-size: 25px;
     font-family: "Sedgwick Ave Display", cursive;
+}
+.click-start{
+  font-family: "Sedgwick Ave Display", cursive;
+  font-size: 20px;
 }
 
 #clock{
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 #main-screen {
@@ -47,7 +59,8 @@ html {
     opacity: 0.8;
 }
 
-#game-title{
+#scoreboard{
   margin-top: 10px;
-
 }
+
+
